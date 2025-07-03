@@ -37,7 +37,7 @@ const StudentList = () => {
     <div className="max-w-4xl mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">Student List</h2>
-        <Link to="/student/new" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <Link to="/student/new" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           + Add Student
         </Link>
       </div>
@@ -58,9 +58,9 @@ const StudentList = () => {
                 <td className="p-2">{student.name}</td>
                 <td className="p-2">{student.email}</td>
                 <td className="p-2 space-x-2">
-                  <Link to={`/student/${student.id}`} className="text-blue-600 hover:underline">View</Link>
+                  <Link to={`/student/${student.id}`} className="text-orange-600 hover:underline">View</Link>
                   <Link to={`/student/edit/${student.id}`} className="text-green-600 hover:underline">Edit</Link>
-                  <button onClick={() => handleDelete(student.id)} className="text-red-600 hover:underline">
+                  <button onClick={() => handleDelete(student.id)} className="btn btn-dash btn-error hover:underline">
                     Delete
                   </button>
                 </td>
