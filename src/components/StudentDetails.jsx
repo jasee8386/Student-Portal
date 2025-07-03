@@ -6,7 +6,8 @@ import axios from "axios";
 export async function studentDetailsLoader({ params }) {
 const students=JSON.parse(localStorage.getItem("students"))||[];
 const student=students.find((student)=>student.id.toString()===params.id);
-if(!student){
+if(student){
+ return student;
   try {
     const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`);
     return res.data;
@@ -16,7 +17,7 @@ if(!student){
 }}
 
 const StudentDetails = () => {
-   //   const { id } = useParams();
+   const { id } = useParams();
 const student = useLoaderData();
 if (!student) {
     return <p className="text-red-500 text-center mt-10">Student not found.</p>;
