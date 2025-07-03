@@ -10,6 +10,14 @@ const StudentList = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+        const savedData = localStorage.getItem("students");
+
+    if (students.length === 0) {
+      if (savedData) {
+        // Load from localStorage if available
+        dispatch(setStudents(JSON.parse(savedData)));
+        setLoading(false);
+      } else {
     const fetchStudents = async () => {
       try {
         const res = await axios.get("https://jsonplaceholder.typicode.com/users");
@@ -23,7 +31,11 @@ const StudentList = () => {
     };
 
     fetchStudents();
-  }, [dispatch]);
+      }
+    } else {
+      setLoading(false);
+    }
+  }, [dispatch,students]);
 
   const handleDelete = (id) => {
     if (confirm("Are you sure you want to delete this student?")) {
